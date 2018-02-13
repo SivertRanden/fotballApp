@@ -5,6 +5,8 @@ import { TrainingDurationPage } from '../training-duration/training-duration';
 import { IntensityPage } from '../intensity/intensity';
 import { MatchDurationPage } from './../match-duration/match-duration';
 import { AdditionalActivitiesPage } from './../additional-activities/additional-activities';
+import { BegrunnelsePage } from '../begrunnelse/begrunnelse';
+import { AktivitetPage } from '../aktivitet/aktivitet';
 
 @Component({
   selector: 'page-home',
@@ -34,6 +36,12 @@ export class HomePage {
 
   loadAdditionalActivities(){
     this.navCtrl.push(AdditionalActivitiesPage);
+  loadBegrunnelse() {
+    this.navCtrl.push(BegrunnelsePage);
+  }
+
+  loadAktivitet() {
+    this.navCtrl.push(AktivitetPage);
   }
 
 }
