@@ -36,6 +36,8 @@ export class HomePage {
 
   loadAdditionalActivities(){
     this.navCtrl.push(AdditionalActivitiesPage);
+  }
+
   loadBegrunnelse() {
     this.navCtrl.push(BegrunnelsePage);
   }
