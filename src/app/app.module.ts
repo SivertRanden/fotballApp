@@ -7,12 +7,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { QuestionnaireStartPage } from '../pages/questionnaire-start/questionnaire-start';
+import { BegrunnelsePage } from '../pages/begrunnelse/begrunnelse';
+import { AktivitetPage } from '../pages/aktivitet/aktivitet';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    QuestionnaireStartPage
+    QuestionnaireStartPage,
+    BegrunnelsePage,
+    AktivitetPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +26,9 @@ import { QuestionnaireStartPage } from '../pages/questionnaire-start/questionnai
   entryComponents: [
     MyApp,
     HomePage,
-    QuestionnaireStartPage
+    QuestionnaireStartPage,
+    BegrunnelsePage,
+    AktivitetPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,60 @@
+<!--
+  Generated template for the AktivitetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Aktivitet</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+    <ion-list radio-group>
+      <ion-title>Hvilken aktivitet?</ion-title>
+      <ion-item>
+          <ion-label>Fotball (vanlig trening)</ion-label>
+          <ion-radio value="fotballVanlig"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Fotballkamp</ion-label>
+          <ion-radio value="fotballKamp"></ion-radio>
+        </ion-item>
+  
+        <ion-item>
+            <ion-label>Fotball (egen trening)</ion-label>
+            <ion-radio value="fotballEgen"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Basis/Styrketrening</ion-label>
+            <ion-radio value="basisStyrke"></ion-radio>
+          </ion-item>
+  
+          <ion-item>
+              <ion-label>Egentrening (med ball)</ion-label>
+              <ion-radio value="egenBall"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Egentrening (uten ball)</ion-label>
+                <ion-radio value="egenUten"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label>Annen idrett</ion-label>
+                  <ion-radio value="annenIdrett"></ion-radio>
+                </ion-item>
+    </ion-list>
+    <ion-buttons end>
+        <button ion-button icon-only>
+            <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+    </ion-buttons>
+  
+  </ion-content>
