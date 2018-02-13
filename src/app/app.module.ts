@@ -9,6 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { QuestionnaireStartPage } from '../pages/questionnaire-start/questionnaire-start';
 import { TrainingDurationPage } from '../pages/training-duration/training-duration';
 import { IntensityPage } from '../pages/intensity/intensity';
+import { MatchDurationPage } from '../pages/match-duration/match-duration';
+import { AdditionalActivitiesPage } from '../pages/additional-activities/additional-activities';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { IntensityPage } from '../pages/intensity/intensity';
     HomePage,
     QuestionnaireStartPage,
     TrainingDurationPage,
-    IntensityPage
+    MatchDurationPage,
+    IntensityPage,
+    AdditionalActivitiesPage
   ],
   imports: [
   BrowserModule,
@@ -28,7 +32,9 @@ import { IntensityPage } from '../pages/intensity/intensity';
     HomePage,
     QuestionnaireStartPage,
     TrainingDurationPage,
-    IntensityPage
+    MatchDurationPage,
+    IntensityPage,
+    AdditionalActivitiesPage
   ],
   providers: [
     StatusBar,

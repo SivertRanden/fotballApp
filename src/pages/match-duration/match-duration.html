@@ -1,0 +1,26 @@
+<!--
+  Generated template for the MatchDurationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>match-duration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header> Hvor lenge spilte du? </ion-list-header>
+    <ion-item>
+        <ion-range min="0 min" max="120 min" step="10" snaps="true" pin="true" [(ngModel)]="singleValue4">
+          <ion-label range-left>0 min</ion-label>
+          <ion-label range-right>120 min</ion-label>
+        </ion-range>
+    </ion-item>
+  </ion-list>
+</ion-content>

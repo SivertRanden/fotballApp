@@ -15,9 +15,12 @@
 
 <ion-content padding>
   <ion-list>
+    <ion-list-header>
+      Hvor hardt følte du det var?
+    </ion-list-header>
     <ion-item>
-        <ion-label> Hvor hardt følte du det var? </ion-label>
-        <ion-range min="0" max="10" snaps="true" pin="true" [(ngModel)]="singleValue4">
+        <ion-label id="intensity-label">{{intensities[0]}}</ion-label>
+        <ion-range min="0" max="10" snaps="true" pin="true" [(ngModel)]="intensity" (ionChange)="onSliderChange($event)">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>10</ion-label>
         </ion-range>

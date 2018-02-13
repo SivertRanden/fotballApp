@@ -18,8 +18,15 @@ export class IntensityPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  intensities: string[] = ["Hvile", "Veldig lett", "Lett", "Moderat", "Litt hardt", "Hardt", "Veldig hardt", "Veldig hardt", "Veldig hardt", "Veldig, veldig hardt", "Maksimalt"];
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntensityPage');
+  }
+
+  onSliderChange(event){
+    let test = document.getElementById("intensity-label");
+    test.textContent = this.intensities[event.value];
   }
 
 }
