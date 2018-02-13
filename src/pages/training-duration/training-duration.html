@@ -1,0 +1,28 @@
+<!--
+  Generated template for the TrainingDurationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>training- duration</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item>
+        <ion-label> Hvor lenge trente du? </ion-label>
+        <ion-range min="0" max="120" step="10" snaps="true" pin="true" [(ngModel)]="singleValue4">
+          <ion-label range-left>0 min</ion-label>
+          <ion-label range-right>120 min</ion-label>
+        </ion-range>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
