@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AktivitetPage } from './../aktivitet/aktivitet';
+import { HomePage } from './../home/home';
 
 /**
  * Generated class for the AdditionalActivitiesPage page.
@@ -20,6 +22,14 @@ export class AdditionalActivitiesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AdditionalActivitiesPage');
+  }
+
+  onNextButtonClicked(answer){
+    if(answer === "ja"){
+      this.navCtrl.setRoot(AktivitetPage, {}, {animate: true, direction: "forward"});
+    }else{
+      this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
+    }
   }
 
 }

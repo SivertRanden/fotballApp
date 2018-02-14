@@ -1,4 +1,4 @@
-<!--
+<!-- 
   Generated template for the AdditionalActivitiesPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-    <ion-list radio-group>
+    <ion-list radio-group [(ngModel)]="answer" name="answer" required>
         <ion-list-header center>Har du hatt flere aktiviteter i dag?</ion-list-header>
     
         <ion-item>
@@ -29,8 +29,9 @@
         </ion-item>
     
       </ion-list>
+
       <ion-buttons text-center>
-          <button ion-button icon-only>
+          <button [disabled]="!answer" ion-button icon-only (click)="onNextButtonClicked(answer)">
               <ion-icon name="arrow-forward"></ion-icon>
           </button>
       </ion-buttons>

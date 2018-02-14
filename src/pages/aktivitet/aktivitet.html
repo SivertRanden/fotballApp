@@ -21,8 +21,8 @@
         <ion-radio value="{{ activity.name }}"></ion-radio>
       </ion-item>
     </ion-list>
-    <ion-buttons end>
-        <button ion-button icon-only (click)="onNextButtonClicked(answer)">
+    <ion-buttons text-center>
+        <button [disabled]="!answer" ion-button icon-only (click)="onNextButtonClicked(answer)">
             <ion-icon name="arrow-forward"></ion-icon>
         </button>
     </ion-buttons>

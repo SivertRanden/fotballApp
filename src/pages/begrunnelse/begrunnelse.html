@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-list radio-group>
+  <ion-list radio-group [(ngModel)]="answer" name="answer" required>
     <ion-list-header>Hvorfor ikke?</ion-list-header>
     <ion-item>
         <ion-label>Syk</ion-label>
@@ -42,7 +42,7 @@
           </ion-item>
   </ion-list>
   <ion-buttons text-center>
-      <button ion-button icon-only (click)="onNextButtonClicked()">
+      <button [disabled]="!answer" ion-button icon-only (click)="onNextButtonClicked()">
           <ion-icon name="arrow-forward"></ion-icon>
       </button>
   </ion-buttons>

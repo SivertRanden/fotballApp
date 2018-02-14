@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { AdditionalActivitiesPage } from './../additional-activities/additional-activities';
 
 /**
  * Generated class for the IntensityPage page.
@@ -27,13 +28,11 @@ export class IntensityPage {
 
   onSliderChange(event){
     let intensityLabel = document.getElementById("intensity-label");
-    console.log("1" + intensityLabel.textContent);
     intensityLabel.innerHTML = this.intensities[event.value];
-    console.log("2" + intensityLabel.textContent);
   }
 
   onNextButtonClicked(){
-    this.navCtrl.popToRoot();
+    this.navCtrl.push(AdditionalActivitiesPage);
   }
 
 }

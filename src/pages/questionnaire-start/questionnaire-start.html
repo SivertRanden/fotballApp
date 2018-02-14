@@ -30,7 +30,7 @@
   </ion-list>
   
   <ion-buttons text-center>
-      <button ion-button icon-only (click)="onNextButtonClicked(answer)">
+      <button [disabled]="!answer" ion-button icon-only (click)="onNextButtonClicked(answer)">
           <ion-icon name="arrow-forward"></ion-icon>
       </button>
   </ion-buttons>
