@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AktivitetPage } from './../aktivitet/aktivitet';
+import { BegrunnelsePage } from './../begrunnelse/begrunnelse';
 
 /**
  * Generated class for the QuestionnaireStartPage page.
@@ -20,6 +22,14 @@ export class QuestionnaireStartPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuestionnaireStartPage');
+  }
+
+  onNextButtonClicked(value){
+    if(value === "ja"){
+      this.navCtrl.push(AktivitetPage);
+    }else{
+      this.navCtrl.push(BegrunnelsePage);
+    }
   }
 
 }

@@ -18,7 +18,7 @@ export class IntensityPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  intensities: string[] = ["Hvile", "Veldig lett", "Lett", "Moderat", "Litt hardt", "Hardt", "Veldig hardt", "Veldig hardt", "Veldig hardt", "Veldig, veldig hardt", "Maksimalt"];
+  private intensities: string[] = ["Hvile", "Veldig lett", "Lett", "Moderat", "Litt hardt", "Hardt", "Veldig hardt", "Veldig hardt", "Veldig hardt", "Veldig, veldig hardt", "Maksimalt"];
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IntensityPage');

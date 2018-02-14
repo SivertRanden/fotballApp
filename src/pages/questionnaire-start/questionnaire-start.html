@@ -14,20 +14,26 @@
 
 
 <ion-content padding>
-  <ion-list radio-group>
+  
+  <ion-list radio-group [(ngModel)]="answer" name="answer" required>
     <ion-list-header>Har du vært i fysisk aktivitet i dag?</ion-list-header>
 
     <ion-item>
       <ion-label>Ja</ion-label>
       <ion-radio value="ja"></ion-radio>
     </ion-item>
-
     <ion-item>
       <ion-label>Nei</ion-label>
       <ion-radio value="nei"></ion-radio>
     </ion-item>
 
   </ion-list>
+  
+  <ion-buttons text-center>
+      <button ion-button icon-only (click)="onNextButtonClicked(answer)">
+          <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+  </ion-buttons>
 
 
 </ion-content>

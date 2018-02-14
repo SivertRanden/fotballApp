@@ -14,45 +14,15 @@
   
   
   <ion-content padding>
-    <ion-list radio-group>
+    <ion-list radio-group [(ngModel)]="answer" name="answer" required>
       <ion-list-header>Hvilken aktivitet?</ion-list-header>
-      <ion-item>
-          <ion-label>Fotball (vanlig trening)</ion-label>
-          <ion-radio value="fotballVanlig"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Fotballkamp</ion-label>
-          <ion-radio value="fotballKamp"></ion-radio>
-        </ion-item>
-  
-        <ion-item>
-            <ion-label>Fotball (egen trening)</ion-label>
-            <ion-radio value="fotballEgen"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Basis/Styrketrening</ion-label>
-            <ion-radio value="basisStyrke"></ion-radio>
-          </ion-item>
-  
-          <ion-item>
-              <ion-label>Egentrening (med ball)</ion-label>
-              <ion-radio value="egenBall"></ion-radio>
-            </ion-item>
-
-            <ion-item>
-                <ion-label>Egentrening (uten ball)</ion-label>
-                <ion-radio value="egenUten"></ion-radio>
-              </ion-item>
-
-              <ion-item>
-                  <ion-label>Annen idrett</ion-label>
-                  <ion-radio value="annenIdrett"></ion-radio>
-                </ion-item>
+      <ion-item *ngFor="let activity of activities">
+        <ion-label>{{ activity.name}}</ion-label>
+        <ion-radio value="{{ activity.name }}"></ion-radio>
+      </ion-item>
     </ion-list>
     <ion-buttons end>
-        <button ion-button icon-only>
+        <button ion-button icon-only (click)="onNextButtonClicked(answer)">
             <ion-icon name="arrow-forward"></ion-icon>
         </button>
     </ion-buttons>
