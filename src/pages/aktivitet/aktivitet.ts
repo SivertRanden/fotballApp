@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from './../home/home';
 import { TrainingDurationPage } from '../training-duration/training-duration';
+import { WhatTeamPage } from './../what-team/what-team';
 
 /**
  * Generated class for the AktivitetPage page.
@@ -31,10 +32,8 @@ export class AktivitetPage {
   }
 
   onNextButtonClicked(answer){
-    console.log(answer);
-    console.log(answer === "Fotballkamp");
-    if(answer === "Fotballkamp"){
-      this.navCtrl.push(HomePage);
+    if(answer === this.activities[1].name){
+      this.navCtrl.push(WhatTeamPage);
     }else{
       this.navCtrl.push(TrainingDurationPage);
     }

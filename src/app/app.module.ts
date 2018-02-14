@@ -13,6 +13,7 @@ import { MatchDurationPage } from '../pages/match-duration/match-duration';
 import { AdditionalActivitiesPage } from '../pages/additional-activities/additional-activities';
 import { BegrunnelsePage } from '../pages/begrunnelse/begrunnelse';
 import { AktivitetPage } from '../pages/aktivitet/aktivitet';
+import { WhatTeamPage } from '../pages/what-team/what-team';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AktivitetPage } from '../pages/aktivitet/aktivitet';
     IntensityPage,
     AdditionalActivitiesPage,
     BegrunnelsePage,
-    AktivitetPage
+    AktivitetPage,
+    WhatTeamPage
   ],
   imports: [
   BrowserModule,
@@ -40,7 +42,8 @@ import { AktivitetPage } from '../pages/aktivitet/aktivitet';
     IntensityPage,
     AdditionalActivitiesPage,
     BegrunnelsePage,
-    AktivitetPage
+    AktivitetPage,
+    WhatTeamPage
   ],
   providers: [
     StatusBar,

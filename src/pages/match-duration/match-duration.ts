@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IntensityPage } from '../intensity/intensity';
 
 /**
  * Generated class for the MatchDurationPage page.
@@ -20,6 +21,10 @@ export class MatchDurationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MatchDurationPage');
+  }
+
+  onNextButtonClicked(){
+    this.navCtrl.push(IntensityPage);
   }
 
 }

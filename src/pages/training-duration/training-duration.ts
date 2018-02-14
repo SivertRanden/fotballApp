@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IntensityPage } from '../intensity/intensity';
 
 /**
  * Generated class for the TrainingDurationPage page.
@@ -20,6 +21,10 @@ export class TrainingDurationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TrainingDurationPage');
+  }
+
+  onNextButtonClicked(){
+    this.navCtrl.push(IntensityPage);
   }
 
 }

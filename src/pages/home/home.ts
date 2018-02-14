@@ -22,28 +22,4 @@ export class HomePage {
     this.navCtrl.push(QuestionnaireStartPage);
   }
 
-  loadTrainingDuration() {
-    this.navCtrl.push(TrainingDurationPage);
-  }
-
-  loadMatchDuration() {
-    this.navCtrl.push(MatchDurationPage);
-  }
-
-  loadIntensity() {
-    this.navCtrl.push(IntensityPage);
-  }
-
-  loadAdditionalActivities(){
-    this.navCtrl.push(AdditionalActivitiesPage);
-  }
-
-  loadBegrunnelse() {
-    this.navCtrl.push(BegrunnelsePage);
-  }
-
-  loadAktivitet() {
-    this.navCtrl.push(AktivitetPage);
-  }
-
 }
