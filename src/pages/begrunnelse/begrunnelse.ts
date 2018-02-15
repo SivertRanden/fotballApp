@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
 
 /**
  * Generated class for the BegrunnelsePage page.
@@ -14,17 +13,24 @@ import { HomePage } from '../home/home';
   selector: 'page-begrunnelse',
   templateUrl: 'begrunnelse.html',
 })
-export class BegrunnelsePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+export class BegrunnelsePage {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BegrunnelsePage');
+    //console.log('ionViewDidLoad BegrunnelsePage');
   }
 
-  onNextButtonClicked(){
-    this.navCtrl.popToRoot();
-  }
+  onNextButtonClicked(answer){
+    window['get']('inaktiv',(val) => {
+      val.inaktiv.årsak = answer;
+      window['set']('inaktiv',val);
 
+      // TODO: post data
+
+      this.navCtrl.popToRoot();
+    });
+  }
 }

@@ -15,19 +15,22 @@ import { MatchDurationPage } from '../match-duration/match-duration';
   templateUrl: 'what-team.html',
 })
 export class WhatTeamPage {
+  teamTypes: {name: string}[] = [
+    {"name": "Mitt lag"},
+    {"name": "Annet lag"}];
 
-  teamTypes: {name: string}[] = [{"name": "Mitt lag"}, {"name": "Annet lag"}];
-
-  teams: {name: string}[] = [{"name": "G15"}, {"name": "G16"},
-                             {"name": "Junior"}, {"name": "Kardlag"}];
+  teams: {name: string}[] = [
+    {"name": "G15"}, {"name": "G16"},
+    {"name": "Junior"}, {"name": "Kardlag"}];
 
   typeSelected: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WhatTeamPage');
+    //console.log('ionViewDidLoad WhatTeamPage');
     document.getElementById("teamList").style.display = "none";
   }
 
@@ -40,8 +43,16 @@ export class WhatTeamPage {
     }
   }
 
-  onNextButtonClicked(answer){
-    this.navCtrl.push(MatchDurationPage);
-  }
+  onNextButtonClicked(answer, type){
+    window['len']((len) => {
+      let name = "aktivitet_" + len;
+      window['get'](name,(val) => {
+        val[name].lag = type == "Mitt lag" ? "Mitt lag" : answer;
+        window['set'](name,val);
+        //console.log(val);
 
+        this.navCtrl.push(MatchDurationPage);
+      });
+    });
+  }
 }

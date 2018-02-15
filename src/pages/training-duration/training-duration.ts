@@ -16,15 +16,24 @@ import { IntensityPage } from '../intensity/intensity';
 })
 export class TrainingDurationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TrainingDurationPage');
+    //console.log('ionViewDidLoad TrainingDurationPage');
   }
 
-  onNextButtonClicked(){
-    this.navCtrl.push(IntensityPage);
+  onNextButtonClicked(answer){
+    window['len']((len) => {
+      let name = "aktivitet_" + len;
+      window['get'](name,(val) => {
+        val[name].varighet = answer;
+        window['set'](name,val);
+        //console.log(val);
+        this.navCtrl.push(IntensityPage);
+      });
+    });
   }
 
 }

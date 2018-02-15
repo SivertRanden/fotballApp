@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { AdditionalActivitiesPage } from './../additional-activities/additional-activities';
 
 /**
@@ -16,14 +15,14 @@ import { AdditionalActivitiesPage } from './../additional-activities/additional-
   templateUrl: 'intensity.html',
 })
 export class IntensityPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {}
 
   private intensities: string[] = ["Hvile", "Veldig lett", "Lett", "Moderat", "Litt hardt", "Hardt", "Veldig hardt", "Veldig hardt", "Veldig hardt", "Veldig, veldig hardt", "Maksimalt"];
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad IntensityPage');
+    //console.log('ionViewDidLoad IntensityPage');
   }
 
   onSliderChange(event){
@@ -31,8 +30,15 @@ export class IntensityPage {
     intensityLabel.innerHTML = this.intensities[event.value];
   }
 
-  onNextButtonClicked(){
-    this.navCtrl.push(AdditionalActivitiesPage);
+  onNextButtonClicked(answer){
+    window['len']((len) => {
+      let name = "aktivitet_" + len;
+      window['get'](name,(val) => {
+        val[name].intensitet = answer;
+        window['set'](name,val);
+        //console.log(val);
+        this.navCtrl.push(AdditionalActivitiesPage);
+      });
+    });
   }
-
 }

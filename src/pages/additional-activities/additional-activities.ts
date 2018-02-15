@@ -15,21 +15,36 @@ import { HomePage } from './../home/home';
   selector: 'page-additional-activities',
   templateUrl: 'additional-activities.html',
 })
-export class AdditionalActivitiesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+export class AdditionalActivitiesPage {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AdditionalActivitiesPage');
+    //console.log('ionViewDidLoad AdditionalActivitiesPage');
   }
 
   onNextButtonClicked(answer){
     if(answer === "ja"){
-      this.navCtrl.setRoot(AktivitetPage, {}, {animate: true, direction: "forward"});
+      window['len']((len) => {
+        let name = "aktivitet_" + (len+1);
+        window['set'](name,{[name]:{}});
+        this.navCtrl.setRoot(AktivitetPage, {}, {animate: true, direction: "forward"});
+      });
     }else{
-      this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
+      window['len']((len) => {
+        let obj = {};
+        let n = 0;
+        window['for']((val) => {
+          let name = "aktivitet_" + (n+1);
+          obj[name] = val;
+          if (++n == len) {
+            // TODO: post data
+            this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
+          }
+        })
+      });
     }
   }
-
 }
