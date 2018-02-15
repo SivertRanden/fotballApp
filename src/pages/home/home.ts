@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { QuestionnaireStartPage } from './../questionnaire-start/questionnaire-start';
-import { TrainingDurationPage } from '../training-duration/training-duration';
-import { IntensityPage } from '../intensity/intensity';
-import { MatchDurationPage } from './../match-duration/match-duration';
-import { AdditionalActivitiesPage } from './../additional-activities/additional-activities';
-import { BegrunnelsePage } from '../begrunnelse/begrunnelse';
-import { AktivitetPage } from '../aktivitet/aktivitet';
+
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-
+  constructor(
+    public navCtrl: NavController,
+    public storage: Storage) {
+      (<any>window).get = (key: string, func: any) => this.storage.get(key).then(func);
+      (<any>window).set = (key: string, value: Object) => this.storage.set(key,value);
+      (<any>window).len = (func: any) => this.storage.length().then(func);
+      (<any>window).for = (func: any) => this.storage.forEach(func);
+      (<any>window).clear = () => { this.storage.clear(); };
   }
 
   loadQuestionnaire() {

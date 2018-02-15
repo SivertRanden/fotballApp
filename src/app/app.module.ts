@@ -15,6 +15,9 @@ import { BegrunnelsePage } from '../pages/begrunnelse/begrunnelse';
 import { AktivitetPage } from '../pages/aktivitet/aktivitet';
 import { WhatTeamPage } from '../pages/what-team/what-team';
 
+/* Storage and communication plugins */
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -29,10 +32,13 @@ import { WhatTeamPage } from '../pages/what-team/what-team';
     WhatTeamPage
   ],
   imports: [
-  BrowserModule,
-    IonicModule.forRoot(MyApp)
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [
+    IonicApp
+  ],
   entryComponents: [
     MyApp,
     HomePage,

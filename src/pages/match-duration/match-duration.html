@@ -17,7 +17,7 @@
   <ion-list>
     <ion-list-header> Hvor lenge spilte du? </ion-list-header>
     <ion-item>
-        <ion-range min="0 min" max="120 min" step="10" snaps="true" pin="true" [(ngModel)]="singleValue4">
+        <ion-range min="0 min" max="120 min" step="10" snaps="true" pin="true" [(ngModel)]="answer">
           <ion-label range-left>0 min</ion-label>
           <ion-label range-right>120 min</ion-label>
         </ion-range>
@@ -25,7 +25,7 @@
   </ion-list>
 
   <ion-buttons text-center>
-      <button ion-button icon-only (click)="onNextButtonClicked()">
+      <button ion-button icon-only (click)="onNextButtonClicked(answer)">
           <ion-icon name="arrow-forward"></ion-icon>
       </button>
   </ion-buttons>

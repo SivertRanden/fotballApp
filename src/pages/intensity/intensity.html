@@ -20,7 +20,7 @@
     </ion-list-header>
     <ion-item>
         <ion-label id="intensity-label">{{intensities[0]}}</ion-label>
-        <ion-range min="0" max="10" snaps="true" pin="true" [(ngModel)]="intensity" (ionChange)="onSliderChange($event)">
+        <ion-range min="0" max="10" snaps="true" pin="true" [(ngModel)]="answer" (ionChange)="onSliderChange($event)">
           <ion-label range-left>0</ion-label>
           <ion-label range-right>10</ion-label>
         </ion-range>
@@ -28,7 +28,7 @@
   </ion-list>
 
   <ion-buttons text-center>
-      <button ion-button icon-only (click)="onNextButtonClicked()">
+      <button ion-button icon-only (click)="onNextButtonClicked(answer)">
           <ion-icon name="arrow-forward"></ion-icon>
       </button>
   </ion-buttons>

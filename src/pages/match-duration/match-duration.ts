@@ -14,17 +14,25 @@ import { IntensityPage } from '../intensity/intensity';
   selector: 'page-match-duration',
   templateUrl: 'match-duration.html',
 })
-export class MatchDurationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+export class MatchDurationPage {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MatchDurationPage');
+    //console.log('ionViewDidLoad MatchDurationPage');
   }
 
-  onNextButtonClicked(){
-    this.navCtrl.push(IntensityPage);
+  onNextButtonClicked(answer){
+    window['len']((len) => {
+      let name = "aktivitet_" + len;
+      window['get'](name,(val) => {
+        val[name].varighet = answer;
+        window['set'](name,val);
+        //console.log(val);
+        this.navCtrl.push(IntensityPage);
+      });
+    });
   }
-
 }
