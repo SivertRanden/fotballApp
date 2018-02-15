@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AktivitetPage } from './../aktivitet/aktivitet';
-import { HomePage } from './../home/home';
 
 /**
  * Generated class for the AdditionalActivitiesPage page.
@@ -38,13 +37,20 @@ export class AdditionalActivitiesPage {
         let n = 0;
         window['for']((val) => {
           let name = "aktivitet_" + (n+1);
-          obj[name] = val;
+          obj[name] = val[name];
           if (++n == len) {
-            // TODO: post data
-            this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
-          }
-        })
-      });
-    }
-  }
-}
+            if((<any>window).browser) {
+
+            } else { // if end
+              window['post']('http://192.168.1.224:8080',obj,(res) => {
+                if (res.status == 200) {
+                  this.navCtrl.popToRoot();
+                }
+              }); // post end
+            } // else end
+          } // if end
+        }); // for end
+      }); // len end
+    } // else end
+  } // onNextButton end
+} // class end
