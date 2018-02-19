@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AktivitetPage } from './../aktivitet/aktivitet';
+import { HomePage } from './../home/home';
 
 /**
  * Generated class for the AdditionalActivitiesPage page.
@@ -42,9 +43,9 @@ export class AdditionalActivitiesPage {
             if((<any>window).browser) {
 
             } else { // if end
-              window['post']('http://192.168.1.224:8080',obj,(res) => {
+              window['post']('http://51.175.7.124:8080/',obj,(res) => {
                 if (res.status == 200) {
-                  this.navCtrl.popToRoot();
+                  this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                 }
               }); // post end
             } // else end

@@ -28,7 +28,10 @@ export class HomePage {
       (<any>window).clear = () => { this.storage.clear(); };
 
       /* http */
-      (<any>window).post = (url: string, object: Object, func: any) => this.http.post(url,object,{}).then(func);
+      (<any>window).post = (url: string, object: Object, func: any) => {
+        this.http.setDataSerializer('json');
+        this.http.post(url,object,{}).then(func);
+      }
   }
 
   loadQuestionnaire() {

@@ -33,7 +33,7 @@ export class BegrunnelsePage {
       if((<any>window).browser) {
 
       } else { // if end
-        window['post']('http://192.168.1.224:8080',val,(res) => {
+        window['post']('http://51.175.7.124:8080/',val,(res) => {
           if (res.status == 200) {
             this.navCtrl.popToRoot();
           }
