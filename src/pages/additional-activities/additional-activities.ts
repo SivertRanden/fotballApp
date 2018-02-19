@@ -41,17 +41,16 @@ export class AdditionalActivitiesPage {
           obj[name] = val[name];
           if (++n == len) {
             if((<any>window).browser) {
-
             } else { // if end
               window['post']('http://51.175.7.124:8080/',obj,(res) => {
                 if (res.status == 200) {
-                  this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
                 }
               }); // post end
             } // else end
           } // if end
         }); // for end
       }); // len end
+      this.navCtrl.setRoot(HomePage, {}, {animate: true, direction: "forward"});
     } // else end
   } // onNextButton end
 } // class end
