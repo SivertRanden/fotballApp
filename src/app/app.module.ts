@@ -14,9 +14,11 @@ import { AdditionalActivitiesPage } from '../pages/additional-activities/additio
 import { BegrunnelsePage } from '../pages/begrunnelse/begrunnelse';
 import { AktivitetPage } from '../pages/aktivitet/aktivitet';
 import { WhatTeamPage } from '../pages/what-team/what-team';
+import { PainmapPage } from '../pages/painmap/painmap';
 
 /* Storage and communication plugins */
 import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -29,10 +31,11 @@ import { IonicStorageModule } from '@ionic/storage';
     AdditionalActivitiesPage,
     BegrunnelsePage,
     AktivitetPage,
-    WhatTeamPage
+    WhatTeamPage,
+    PainmapPage
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -49,7 +52,8 @@ import { IonicStorageModule } from '@ionic/storage';
     AdditionalActivitiesPage,
     BegrunnelsePage,
     AktivitetPage,
-    WhatTeamPage
+    WhatTeamPage,
+    PainmapPage
   ],
   providers: [
     StatusBar,

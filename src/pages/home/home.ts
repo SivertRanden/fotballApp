@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { QuestionnaireStartPage } from './../questionnaire-start/questionnaire-start';
 
 import { Storage } from '@ionic/storage';
+import { PainmapPage } from './../painmap/painmap';
 
 @Component({
   selector: 'page-home',
@@ -22,6 +23,10 @@ export class HomePage {
 
   loadQuestionnaire() {
     this.navCtrl.push(QuestionnaireStartPage);
+  }
+
+  loadPainMap() {
+    this.navCtrl.push(PainmapPage);
   }
 
 }
