@@ -6,6 +6,8 @@ import { Platform } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
 
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -16,7 +18,8 @@ export class HomePage {
     public navCtrl: NavController,
     public platform: Platform,
     public storage: Storage,
-    public http: HTTP) {
+    public http: HTTP,
+    public push: Push) {
       /* globals */
       (<any>window).browser = this.platform.is('core') ? true : false;
 
@@ -32,10 +35,44 @@ export class HomePage {
         this.http.setDataSerializer('json');
         this.http.post(url,object,{}).then(func);
       }
+
+      /* push */
+      this.setupPush();
   }
 
   loadQuestionnaire() {
     this.navCtrl.push(QuestionnaireStartPage);
   }
 
+  setupPush() {
+    this.push.createChannel({
+      id: "testchannel1",
+      description: "My first test channel",
+      importance: 3
+    }).then(() => console.log('Channel created'));
+
+    const options: PushOptions = {
+      android : {
+        senderID: "1096937960562"
+      },
+      ios: {
+          alert: 'true',
+          badge: true,
+          sound: 'false'
+      },
+      windows: {},
+      browser: {
+          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+      }
+    };
+
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+    pushObject.on('registration').subscribe((registration: any) => {
+      this.http.post('http://51.175.7.124:8080/register',registration,{}).then();
+      console.log('Device registered', registration);
+    });
+    pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+  }
 }
