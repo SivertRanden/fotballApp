@@ -17,6 +17,8 @@ import { WhatTeamPage } from '../pages/what-team/what-team';
 
 /* Storage and communication plugins */
 import { IonicStorageModule } from '@ionic/storage';
+import { HTTP } from '@ionic-native/http';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   providers: [
     StatusBar,
+    HTTP,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
