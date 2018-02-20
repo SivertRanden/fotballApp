@@ -8,6 +8,8 @@ import { HTTP } from '@ionic-native/http';
 
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
+import { PainmapPage } from './../painmap/painmap';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -75,4 +77,9 @@ export class HomePage {
     });
     pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
   }
+  
+  loadPainMap() {
+    this.navCtrl.push(PainmapPage);
+  }
+
 }

@@ -14,6 +14,7 @@ import { AdditionalActivitiesPage } from '../pages/additional-activities/additio
 import { BegrunnelsePage } from '../pages/begrunnelse/begrunnelse';
 import { AktivitetPage } from '../pages/aktivitet/aktivitet';
 import { WhatTeamPage } from '../pages/what-team/what-team';
+import { PainmapPage } from '../pages/painmap/painmap';
 
 /* Storage and communication plugins */
 import { IonicStorageModule } from '@ionic/storage';
@@ -22,6 +23,7 @@ import { HTTP } from '@ionic-native/http';
 /* Notification plugins */
 import { Push } from '@ionic-native/push';
 import { FirebaseProvider } from '../providers/firebase/firebase';
+
 
 
 @NgModule({
@@ -35,10 +37,11 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     AdditionalActivitiesPage,
     BegrunnelsePage,
     AktivitetPage,
-    WhatTeamPage
+    WhatTeamPage,
+    PainmapPage
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -55,7 +58,8 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     AdditionalActivitiesPage,
     BegrunnelsePage,
     AktivitetPage,
-    WhatTeamPage
+    WhatTeamPage,
+    PainmapPage
   ],
   providers: [
     StatusBar,
