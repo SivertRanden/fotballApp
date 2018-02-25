@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AdditionalActivitiesPage } from './../additional-activities/additional-activities';
+import { UtilityService } from '../../app/injectable/utility.service';
 
 /**
  * Generated class for the IntensityPage page.
@@ -17,7 +18,8 @@ import { AdditionalActivitiesPage } from './../additional-activities/additional-
 export class IntensityPage {
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams) {}
+    public navParams: NavParams,
+    public util: UtilityService) {}
 
   private intensities: string[] = ["Hvile", "Veldig lett", "Lett", "Moderat", "Litt hardt", "Hardt", "Veldig hardt", "Veldig hardt", "Veldig hardt", "Veldig, veldig hardt", "Maksimalt"];
 
@@ -31,11 +33,11 @@ export class IntensityPage {
   }
 
   onNextButtonClicked(answer){
-    window['len']((len) => {
+    this.util.len((len) => {
       let name = "aktivitet_" + len;
-      window['get'](name,(val) => {
+      this.util.get(name,(val) => {
         val[name].intensitet = answer ? answer : 0;
-        window['set'](name,val);
+        this.util.set(name,val);
         //console.log(val);
         this.navCtrl.push(AdditionalActivitiesPage);
       });

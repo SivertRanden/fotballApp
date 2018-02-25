@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { MatchDurationPage } from '../match-duration/match-duration';
+import { UtilityService } from '../../app/injectable/utility.service';
 
 /**
  * Generated class for the WhatTeamPage page.
@@ -27,10 +28,9 @@ export class WhatTeamPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams) {}
+    public util: UtilityService) {}
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad WhatTeamPage');
     document.getElementById("teamList").style.display = "none";
   }
 
@@ -44,13 +44,11 @@ export class WhatTeamPage {
   }
 
   onNextButtonClicked(answer, type){
-    window['len']((len) => {
+    this.util.len((len) => {
       let name = "aktivitet_" + len;
-      window['get'](name,(val) => {
+      this.util.get(name,(val) => {
         val[name].lag = type == "Mitt lag" ? "Mitt lag" : answer;
-        window['set'](name,val);
-        //console.log(val);
-
+        this.util.set(name,val);
         this.navCtrl.push(MatchDurationPage);
       });
     });

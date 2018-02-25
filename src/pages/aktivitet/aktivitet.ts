@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { TrainingDurationPage } from '../training-duration/training-duration';
 import { WhatTeamPage } from './../what-team/what-team';
+import { UtilityService } from '../../app/injectable/utility.service';
 
 /**
  * Generated class for the AktivitetPage page.
@@ -23,21 +24,20 @@ export class AktivitetPage {
     {"name": "Egentrening (med ball)"}, {"name": "Løpetrening (uten ball)"},
     {"name": "Annen idrett"}];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(
+    public navCtrl: NavController,
+    public util: UtilityService) {}
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad AktivitetPage');
   }
 
   onNextButtonClicked(answer){
-    window['len']((len) => {
+    this.util.len((len) => {
       let name = "aktivitet_" + len;
-      console.log(name);
-      window['get'](name,(val) => {
+      this.util.get(name,(val) => {
         val[name].aktivitet = answer;
-        window['set'](name,val);
-        //console.log(val);
-
+        this.util.set(name,val);
         if(answer === this.activities[1].name){
           this.navCtrl.push(WhatTeamPage);
         } else {

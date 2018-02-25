@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LoadingController } from 'ionic-angular';
+import { UtilityService } from '../../app/injectable/utility.service';
 
 /**
  * Generated class for the BegrunnelsePage page.
@@ -22,7 +23,8 @@ export class BegrunnelsePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,
+    public util: UtilityService) {
       this.communicating = true;
     }
     
@@ -36,14 +38,14 @@ export class BegrunnelsePage {
 
   onNextButtonClicked(answer){
     this.showLoading();
-    window['get']('inaktiv',(val) => {
+    this.util.get('inaktiv',(val) => {
       val.inaktiv.årsak = answer;
-      window['set']('inaktiv',val);
+      this.util.set('inaktiv',val);
 
-      if((<any>window).browser) {
+      if (this.util.browser) {
 
       } else { // if end
-        window['post']('http://51.175.7.124:8080/',val,(res) => {
+        this.util.post('http://51.175.7.124:8080/',val,(res) => {
           this.hideLoading();  
           if (res.status == 200) {
           }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { AktivitetPage } from './../aktivitet/aktivitet';
 import { BegrunnelsePage } from './../begrunnelse/begrunnelse';
 
-import { Storage } from '@ionic/storage';
+import { UtilityService } from '../../app/injectable/utility.service';
 
 /**
  * Generated class for the QuestionnaireStartPage page.
@@ -21,20 +21,18 @@ import { Storage } from '@ionic/storage';
 export class QuestionnaireStartPage {
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams,
-    public storage: Storage) {}
+    public util: UtilityService) {}
 
   ionViewDidLoad() {
-    this.storage.clear();
-    //console.log('ionViewDidLoad QuestionnaireStartPage');
+    this.util.clear();
   }
 
   onNextButtonClicked(value){
     if(value === "ja"){
-      window['set']('aktivitet_1',{aktivitet_1:{}});
+      this.util.set('aktivitet_1',{aktivitet_1:{}});
       this.navCtrl.push(AktivitetPage);
     }else{
-      window['set']('inaktiv',{inaktiv:{}});
+      this.util.set('inaktiv',{inaktiv:{}});
       this.navCtrl.push(BegrunnelsePage);
     }
   }

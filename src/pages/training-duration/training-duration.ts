@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { IntensityPage } from '../intensity/intensity';
+import { UtilityService } from '../../app/injectable/utility.service';
 
 /**
  * Generated class for the TrainingDurationPage page.
@@ -18,19 +19,18 @@ export class TrainingDurationPage {
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams) {}
+    public util: UtilityService) {}
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad TrainingDurationPage');
   }
 
   onNextButtonClicked(answer){
-    window['len']((len) => {
+    this.util.len((len) => {
       let name = "aktivitet_" + len;
-      window['get'](name,(val) => {
+      this.util.get(name,(val) => {
         val[name].varighet = answer ? answer : 0;
-        window['set'](name,val);
-        //console.log(val);
+        this.util.set(name,val);
         this.navCtrl.push(IntensityPage);
       });
     });
