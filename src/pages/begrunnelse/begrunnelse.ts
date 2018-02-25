@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HTTP } from '@ionic-native/http';
+
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the BegrunnelsePage page.
@@ -16,16 +17,25 @@ import { HTTP } from '@ionic-native/http';
 })
 
 export class BegrunnelsePage {
+  communicating = true;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public http: HTTP) {}
+    public loadingCtrl: LoadingController) {
+      this.communicating = true;
+    }
+    
+  loading = this.loadingCtrl.create({
+    content: 'Snakker med tjeneren. Vennligst vent...'
+  });
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad BegrunnelsePage');
   }
 
   onNextButtonClicked(answer){
+    this.showLoading();
     window['get']('inaktiv',(val) => {
       val.inaktiv.årsak = answer;
       window['set']('inaktiv',val);
@@ -34,11 +44,40 @@ export class BegrunnelsePage {
 
       } else { // if end
         window['post']('http://51.175.7.124:8080/',val,(res) => {
+          this.hideLoading();  
           if (res.status == 200) {
-            this.navCtrl.popToRoot();
           }
+        },(err) => {
+          this.hideLoading(); 
         }); // post end
       } // else end
     }); // get end
   } // onNextButton end
+
+  showLoading() {
+    this.loading.onDidDismiss(() => {
+      this.navCtrl.popToRoot();
+    });
+    this.loading.present();
+    setTimeout(() => {
+      this.communicating = false;
+    },1000)
+  }
+
+  hideLoading() {
+    let doHide = () => {
+      this.loading.dismiss();
+      this.loading = this.loadingCtrl.create({
+        content: 'Snakker med tjeneren. Vennligst vent...'
+      });
+      this.loading.onDidDismiss(() => {
+        this.navCtrl.popToRoot();
+      });  
+    }
+    if(this.communicating) {
+      setTimeout(this.hideLoading.bind(this),100);
+    } else {
+      doHide();
+    }
+  }
 } // class end
