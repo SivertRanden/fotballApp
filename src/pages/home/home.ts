@@ -38,19 +38,15 @@ export class HomePage {
       /* http */
       (<any>window).post = (url: string, object: Object, then: any, err: any) => {
         this.http.setDataSerializer('json');
-        let received = false;
+        let processed = false;
         let request = this.http.post(url,object,{})
         .then((res) => {
           then(res);
-          received = true;
+          processed = true;
         })
-        .catch(() => {
-          err();
-          this.serverDownAlert();
-        });
         setTimeout(() => {
-          if (!received) {
-            request.then().catch();
+          if (!processed) {
+            request.then(() => {});
             err();
             this.serverDownAlert();
           }
