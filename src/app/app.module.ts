@@ -24,7 +24,7 @@ import { HTTP } from '@ionic-native/http';
 import { Push } from '@ionic-native/push';
 import { FirebaseProvider } from '../providers/firebase/firebase';
 
-
+import { UtilityService } from './injectable/utility.service';
 
 @NgModule({
   declarations: [
@@ -65,6 +65,7 @@ import { FirebaseProvider } from '../providers/firebase/firebase';
     StatusBar,
     HTTP,
     SplashScreen,
+    UtilityService,
     Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FirebaseProvider

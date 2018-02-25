@@ -17,7 +17,7 @@
 
   <ion-content padding>
     <ion-list radio-group (ionChange)="onRadioChange(type)" [(ngModel)]="type" required>
-      <ion-list-header>For hvilket lag?</ion-list-header>
+      <h3>For hvilket lag?</h3>
       <ion-item *ngFor="let type of teamTypes">
         <ion-label>{{ type.name }}</ion-label>
         <ion-radio value="{{ type.name }}"></ion-radio>
