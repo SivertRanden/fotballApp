@@ -20,6 +20,10 @@ import { PainmapPage } from '../pages/painmap/painmap';
 import { IonicStorageModule } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
 
+/* Notification plugins */
+import { Push } from '@ionic-native/push';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
 
 
 @NgModule({
@@ -61,7 +65,9 @@ import { HTTP } from '@ionic-native/http';
     StatusBar,
     HTTP,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Push,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider
   ]
 })
 export class AppModule {}
