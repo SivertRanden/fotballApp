@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { QuestionnaireStartPage } from './../questionnaire-start/questionnaire-start';
+import { PainmapPage } from './../painmap/painmap';
 import { Platform } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
 
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
-
-import { PainmapPage } from './../painmap/painmap';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -16,12 +16,15 @@ import { PainmapPage } from './../painmap/painmap';
 })
 
 export class HomePage {
+  pushSetup = false;
+
   constructor(
     public navCtrl: NavController,
     public platform: Platform,
     public storage: Storage,
     public http: HTTP,
-    public push: Push) {
+    public push: Push,
+    public alertCtrl: AlertController) {
       /* globals */
       (<any>window).browser = this.platform.is('core') ? true : false;
 
@@ -33,13 +36,41 @@ export class HomePage {
       (<any>window).clear = () => { this.storage.clear(); };
 
       /* http */
-      (<any>window).post = (url: string, object: Object, func: any) => {
+      (<any>window).post = (url: string, object: Object, then: any, err: any) => {
         this.http.setDataSerializer('json');
-        this.http.post(url,object,{}).then(func);
+        let received = false;
+        let request = this.http.post(url,object,{})
+        .then((res) => {
+          then(res);
+          received = true;
+        })
+        .catch(() => {
+          err();
+          this.serverDownAlert();
+        });
+        setTimeout(() => {
+          if (!received) {
+            request.then().catch();
+            err();
+            this.serverDownAlert();
+          }
+        },10000);
       }
 
       /* push */
-      this.setupPush();
+      if (!this.pushSetup) {
+        this.setupPush();
+        this.pushSetup = true;
+      }
+  }
+
+  serverDownAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Ingen respons',
+      subTitle: 'Din respons ble ikke mottatt av tjeneren. Vennligst prøv igjen senere.',
+      buttons: ['Lukk']
+    });
+    alert.present();
   }
 
   loadQuestionnaire() {
