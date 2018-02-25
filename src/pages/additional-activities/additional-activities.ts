@@ -75,7 +75,7 @@ export class AdditionalActivitiesPage {
     this.loading.present();
     setTimeout(() => {
       this.communicating = false;
-    },2000)
+    },1000)
   }
 
   hideLoading() {
@@ -94,11 +94,4 @@ export class AdditionalActivitiesPage {
       doHide();
     }
   }
-
-
-
-
-
-
-  
 } // class end

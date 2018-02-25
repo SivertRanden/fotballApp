@@ -16,7 +16,7 @@ import { AlertController } from 'ionic-angular';
 })
 
 export class HomePage {
-  pushSetup = false;
+  doSetup = true;
 
   constructor(
     public navCtrl: NavController,
@@ -25,38 +25,38 @@ export class HomePage {
     public http: HTTP,
     public push: Push,
     public alertCtrl: AlertController) {
-      /* globals */
-      (<any>window).browser = this.platform.is('core') ? true : false;
+      if (this.doSetup) {
+        /* globals */
+        (<any>window).browser = this.platform.is('core') ? true : false;
 
-      /* storage */
-      (<any>window).get = (key: string, func: any) => this.storage.get(key).then(func);
-      (<any>window).set = (key: string, value: Object) => this.storage.set(key,value);
-      (<any>window).len = (func: any) => this.storage.length().then(func);
-      (<any>window).for = (func: any) => this.storage.forEach(func);
-      (<any>window).clear = () => { this.storage.clear(); };
+        /* storage */
+        (<any>window).get = (key: string, func: any) => this.storage.get(key).then(func);
+        (<any>window).set = (key: string, value: Object) => this.storage.set(key,value);
+        (<any>window).len = (func: any) => this.storage.length().then(func);
+        (<any>window).for = (func: any) => this.storage.forEach(func);
+        (<any>window).clear = () => { this.storage.clear(); };
 
-      /* http */
-      (<any>window).post = (url: string, object: Object, then: any, err: any) => {
-        this.http.setDataSerializer('json');
-        let processed = false;
-        let request = this.http.post(url,object,{})
-        .then((res) => {
-          then(res);
-          processed = true;
-        })
-        setTimeout(() => {
-          if (!processed) {
-            request.then(() => {});
-            err();
-            this.serverDownAlert();
-          }
-        },10000);
-      }
+        /* http */
+        (<any>window).post = (url: string, object: Object, then: any, err: any) => {
+          this.http.setDataSerializer('json');
+          let processed = false;
+          let request = this.http.post(url,object,{})
+          .then((res) => {
+            then(res);
+            processed = true;
+          })
+          setTimeout(() => {
+            if (!processed) {
+              request.then(() => {});
+              err();
+              this.serverDownAlert();
+            }
+          },10000);
+        }
 
-      /* push */
-      if (!this.pushSetup) {
-        this.setupPush();
-        this.pushSetup = true;
+        /* push */
+          this.setupPush();
+          this.doSetup = false;
       }
   }
 
