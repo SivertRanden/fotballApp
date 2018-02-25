@@ -15,7 +15,7 @@
   
   <ion-content padding>
     <ion-list radio-group [(ngModel)]="answer" name="answer" required>
-      <ion-list-header>Hvilken aktivitet?</ion-list-header>
+      <h3>Hvilken aktivitet?</h3>
       <ion-item *ngFor="let activity of activities">
         <ion-label>{{ activity.name}}</ion-label>
         <ion-radio value="{{ activity.name }}"></ion-radio>

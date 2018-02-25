@@ -15,9 +15,9 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-list-header>
+    <h3>
       Hvor hardt følte du det var?
-    </ion-list-header>
+    </h3>
     <ion-item>
         <ion-label id="intensity-label">{{intensities[0]}}</ion-label>
         <ion-range min="0" max="10" snaps="true" pin="true" [(ngModel)]="answer" (ionChange)="onSliderChange($event)">
