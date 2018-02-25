@@ -75,8 +75,8 @@ export class HomePage {
 
   setupPush() {
     this.push.createChannel({
-      id: "testchannel1",
-      description: "My first test channel",
+      id: "push_channel",
+      description: "channel for push reminders",
       importance: 3
     }).then(() => console.log('Channel created'));
 
@@ -100,7 +100,6 @@ export class HomePage {
     pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
     pushObject.on('registration').subscribe((registration: any) => {
       this.http.post('http://51.175.7.124:8080/register',registration,{}).then();
-      console.log('Device registered', registration);
     });
     pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
   }
