@@ -50,7 +50,7 @@ export class BegrunnelsePage {
           if (res.status == 200) {
           }
         },(err) => {
-          this.hideLoading(); 
+          this.hideLoading();
         }); // post end
       } // else end
     }); // get end
@@ -77,7 +77,7 @@ export class BegrunnelsePage {
       });  
     }
     if(this.communicating) {
-      setTimeout(this.hideLoading.bind(this),100);
+      setTimeout(this.hideLoading.bind(this),250);
     } else {
       doHide();
     }

@@ -29,18 +29,18 @@ export class UtilityService {
     
     /* http */
     post = (url: string, object: Object, then: any, err: any) => {
-        this.http.setDataSerializer('json');
         let processed = false;
-        let request = this.http.post(url,object,{})
+        this.http.setDataSerializer('json');
+        this.http.setRequestTimeout(10);
+        this.http.post(url,object,{})
         .then((res) => {
             then(res);
             processed = true;
         })
         setTimeout(() => {
             if (!processed) {
-            request.then(() => {});
-            err();
-            this.serverDownAlert();
+                err();
+                this.serverDownAlert();
             }
         },10000);
     }
