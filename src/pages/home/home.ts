@@ -5,6 +5,7 @@ import { Platform } from 'ionic-angular';
 
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
+import { PainmapPage } from './../painmap/painmap';
 
 @Component({
   selector: 'page-home',
@@ -36,6 +37,10 @@ export class HomePage {
 
   loadQuestionnaire() {
     this.navCtrl.push(QuestionnaireStartPage);
+  }
+
+  loadPainMap() {
+    this.navCtrl.push(PainmapPage);
   }
 
 }
