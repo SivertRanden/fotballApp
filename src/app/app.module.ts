@@ -18,6 +18,8 @@ import { PainmapPage } from '../pages/painmap/painmap';
 
 /* Storage and communication plugins */
 import { IonicStorageModule } from '@ionic/storage';
+import { HTTP } from '@ionic-native/http';
+
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   providers: [
     StatusBar,
+    HTTP,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

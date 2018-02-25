@@ -28,7 +28,7 @@ export class MatchDurationPage {
     window['len']((len) => {
       let name = "aktivitet_" + len;
       window['get'](name,(val) => {
-        val[name].varighet = answer;
+        val[name].varighet = answer ? answer : 0;
         window['set'](name,val);
         //console.log(val);
         this.navCtrl.push(IntensityPage);

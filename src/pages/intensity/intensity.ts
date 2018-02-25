@@ -34,7 +34,7 @@ export class IntensityPage {
     window['len']((len) => {
       let name = "aktivitet_" + len;
       window['get'](name,(val) => {
-        val[name].intensitet = answer;
+        val[name].intensitet = answer ? answer : 0;
         window['set'](name,val);
         //console.log(val);
         this.navCtrl.push(AdditionalActivitiesPage);
